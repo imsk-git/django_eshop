@@ -1,8 +1,6 @@
-
-
 {% extends 'index.html' %}
 {% block title %}
--Home
+- Home
 {% endblock title %}
 
 {% block content %}
@@ -12,7 +10,7 @@
       <div class="carousel-inner">
 
         {% for banner in banners %}
-        <div class="carousel-item {% if loop.first %}active{% endif %}">
+        <div class="carousel-item active">
           <img src="{{ banner.img.url }}" class="d-block w-100" alt="Image not found">
         </div>
         {% endfor %}
