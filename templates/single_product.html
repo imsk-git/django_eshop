@@ -6,7 +6,28 @@
 
 {% block content %}
 
-<div class="col">
+{% if product %}
+    <div class="col-md-4 mb-4">
+        <a href="{% url 'productdetails' id=product.id %}">
+            <div class="card" style="width: 18rem;">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                {% else %}
+                    <p>No image available.</p>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{product.title}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <p class="card-text">{{product.price}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+{% else %}
+    <p>No product data found</p>
+{% endif %}
+
+<!-- <div class="col">
     <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="{{ product.image.url }}" alt=" {{product.title}} image not found.">
     <div class="card-body">
@@ -16,6 +37,8 @@
         <a href="#" class="btn btn-primary">Add to cart</a>
     </div>
     </div>
-</div>
+</div> -->
+
+
 
 {% endblock %}

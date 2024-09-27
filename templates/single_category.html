@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block title %}
+- {{category.name}}
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="text-center my-4" style="color: cadetblue;">{{ category.name }}</h1>
+
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <a href="{% url 'productdetails' id=product.id %}">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                {% else %}
+                    <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 200px; background-color: #f8f9fa;">
+                        <p class="text-muted">No image available.</p>
+                    </div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text"><strong>${{ product.price }}</strong></p>
+                </div>
+            </a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p class="text-center">No products available in this category.</p>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

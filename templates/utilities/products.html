@@ -1,26 +1,36 @@
 {% load static %}
 
-<!---card starts--->
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+
+<!---card starts --->
 <br>
 <h2 class="text-center">Products</h2> 
 <br>
-    <div class="container">
-        <div class="row">
-            {% for product in products %}
-            <div class="col">
+
+
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'productdetails' id=product.id %}">
                 <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ product.image.url }}" alt=" {{product.title}} image not found.">
-                <div class="card-body">
-                    <h5 class="card-title">{{product.title}}</h5>
-                    <p class="card-text">{{product.description}}</p>
-                    <p class="card-text">{{product.price}}</p>
-                    <a href="{% url 'productdetails' id=product.id %}" class="btn btn-primary">Info</a>
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    {% else %}
+                        <p>No image available.</p>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <p class="card-text">{{product.price}}</p>
+                    </div>
                 </div>
-                </div>
-            </div>
-            {% endfor %} 
+            </a>
         </div>
+        {% endfor %} 
     </div>
+</div>
+
     <br>
     <a href="{% url 'add_product' %}"><button class="btn btn-primary" type="submit">Add New Product</button></a>
 
