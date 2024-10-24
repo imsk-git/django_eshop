@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-7s%qb-j4@7mo_@)8id--oa=ld4@=w(e_3ddri#pfustlwi+4zo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['192.168.1.80','c24a-2400-1a00-bd11-e592-d49d-4ccd-93ba-dc36.ngrok-free.app']
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'products',
     'categories',
     'contact',
+    'admin_panel',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +61,7 @@ ROOT_URLCONF = 'testproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': ['templates','admin_panel/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

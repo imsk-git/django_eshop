@@ -10,7 +10,9 @@
             <div class="col">
                 <a href="{% url 'category_detail' id=category.id %}" class="text-black text-decoration-none"> 
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ category.image.url }}" alt="Image not found.">
+                    {% if category.image %}
+                        <img class="card-img-top" src="{{ category.image.url }}" alt="Image not found.">
+                    {% endif %}
                     <div class="card">
                         <h5  class="card-title">{{category.name}}</h5>
                     </div>
